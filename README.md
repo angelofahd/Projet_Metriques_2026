@@ -59,7 +59,21 @@ make run
 
 Vous avez dans cette séquence mis à jour du code dans Github, puis dans Codespace pour enfin observer le résultat en ligne.
 
-
+---------------------------------------------------
+Séquence 4 : Exercices
+---------------------------------------------------
+Objectif : Apprendre à travailler avec des API  
+Difficulté : Moyenne (~45 minutes)
+---------------------------------------------------
+### Exercice 1 : Création d'une nouvelle route dans votre application   
+#### Objectif : Savoir créer des routes (c'est à dire la création d'une nouvelle API)
+L'exercice consiste à créer une nouvelle route accèssible depuis le chemin "/contact" de votre site et qui affichera "Ma page de contact" dans le navigateur de l'internaute. L'internaute saisira l'adresse suivante dans son navigateur : **https://{Votre URL}/contact** et obtiendra donc le résultat "Ma page de contact". Vous allez pour cela, depuis GitHUB, **ajouter le code suivant dans votre fichier app.py** qui est à la racine de votre Repository :
+```
+@app.route("/contact")
+def MaPremiereAPI():
+    return "<h2>Ma page de contact</h2>"  
+```
+**Remarque importante** : Ce code est à ajouter après la ligne "app = Flask(__name__)" qui est le début de votre programme et avant le bloc "if __name__ == "__main__" à la fin du fichier.
 
 ------------------------------------------------------------------------------------------------------
 PROJET METRIQUES
