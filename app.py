@@ -35,16 +35,11 @@ def mongraphique():
     return render_template("graphique.html")
 
 
-@app.route("/wind")
+@app.route("/Précipitations")
 def wind():
-    return render_template("wind.html")
+    return render_template("Précipitations.html")
 
-@app.get("/paris/wind-history")
-def wind_history():
-    url = ("https://archive-api.open-meteo.com/v1/archive?latitude=48.8566&longitude=2.3522&hourly=wind_speed_10m&start_date=2016-02-23&end_date=2016-02-23&timezone=Europe/Paris")
 
-    response = requests.get(url)
-    return response.json()
 
 @app.route("/histogramme")
 def histogramme():
