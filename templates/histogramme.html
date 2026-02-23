@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Histogramme - Prévisions Paris</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e437b, #4facfe);
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        #chart_div {
+            width: 90%;
+            max-width: 900px;
+            height: 600px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🌤️ Prévisions météo - Paris (7 jours)</h1>
+<div id="chart_div"></div>
+
+<script>
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(fetchWeather);
+
+    function fetchWeather() {
+        fetch("https://api.open-meteo.com/v1/forecast?latitude=48.8566&longitude=2.3522&daily=temperature_2m_max&timezone=Europe/Paris")
+            .then(response => response.json())
+            .then(data => {
+                drawChart(data);
+            });
+    }
+
+    function drawChart(apiData) {
+
+        const dates = apiData.daily.time.slice(0,7);
+        const temps = apiData.daily.temperature_2m_max.slice(0,7);
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Jour');
+        data.addColumn('number', 'Température Max (°C)');
+
+        for (let i = 0; i < dates.length; i++) {
+            data.addRow([dates[i], temps[i]]);
+        }
+
+        var options = {
+            title: 'Température maximale prévue à Paris',
+            legend: { position: 'none' },
+            colors: ['#1e437b'],
+            backgroundColor: 'white',
+            hAxis: {
+                title: 'Date'
+            },
+            vAxis: {
+                title: 'Température (°C)'
+            },
+            animation:{
+                startup: true,
+                duration: 1000,
+                easing: 'out'
+            }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+
+</body>
+</html>
+
+
+
+{% endblock %}

@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>    
+    body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e437b, #4facfe);
+            color: white;
+            text-align: center;
+        }
+        
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #4facfe, #00f2fe, #43e97b, #38f9d7);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+} */
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.weather-container {
+    width: 900px;
+    max-width: 95%;
+    display: flex;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.weather-info {
+    flex: 1;
+    padding: 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(0,0,0,0.2);
+}
+
+.weather-info h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.location {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.temperature {
+    font-size: 60px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.condition {
+    font-size: 18px;
+}
+
+.contact-form {
+    flex: 1;
+    padding: 40px;
+    background: white;
+}
+
+.contact-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    resize: none;
+}
+
+.input-group label {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    color: #aaa;
+    font-size: 14px;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:valid + label {
+    top: -10px;
+    font-size: 12px;
+    color: #4facfe;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .weather-container {
+        flex-direction: column;
+    }
+
+    .weather-info {
+        text-align: center;
+    }
+}
+        
+
+
+/* Make full height */
+html, body {
+    height: 100%;
+}
+
+/* Center content */
+.content {
+    min-height: calc(100vh - 70px); /* subtract navbar height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Optional: limit box width */
+.weather-container {
+    width: 900px;
+    max-width: 95%;
+}
+        </style>
+<body>
+
+    <div class="weather-container">
+        <div class="weather-info">
+            <h1>🌤️ Weather Connect</h1>
+            <p class="location">Paris, France</p>
+            <div class="temperature">18°C</div>
+            <p class="condition">Partly Cloudy</p>
+        </div>
+
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form>
+                <div class="input-group">
+                    <input type="text" required>
+                    <label>Name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+
+                <div class="input-group">
+                    <textarea rows="4" required></textarea>
+                    <label>Message</label>
+                </div>
+
+                <button type="submit">Send Message ☁️</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}
+

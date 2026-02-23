@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Weather App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="logo">🌤️ WeatherApp</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/rapport">Rapport</a></li>
+            <li><a href="/wind">Wind</a></li>
+            <li><a href="/histogramme">Histogramme</a></li>
+            <li><a href="/contact">Contact</a></li>
+
+
+
+        </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>
